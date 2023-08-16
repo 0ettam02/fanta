@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Risultati Squadra Fantacalcio{% endblock %}
+
+{% block content %}
+<h1 class="mt-4">Squadra Fantacalcio Selezionata</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ruolo</th>
+            <th>Mv</th>
+            <th>Mf</th>
+            <th>Ass</th>
+            <th>R+</th>
+            <th>Rc</th>
+            <th>R-</th>
+            <th>Amm</th>
+            <th>Esp</th>
+            <th>Au</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% set row_color = 'odd' %}
+        {% for index, player in squadra.iterrows() %}
+            <tr class="{{ row_color }}">
+                <td>{{ player['Nome'] }}</td>
+                <td>{{ player['Ruolo'] }}</td>
+                <td>{{ player['Mv'] }}</td>
+                <td>{{ player['Mf'] }}</td>
+                <td>{{ player['Ass'] }}</td>
+                <td>{{ player['R+'] }}</td>
+                <td>{{ player['Rc'] }}</td>
+                <td>{{ player['R-'] }}</td>
+                <td>{{ player['Amm'] }}</td>
+                <td>{{ player['Esp'] }}</td>
+                <td>{{ player['Au'] }}</td>
+            </tr>
+            {% if row_color == 'odd' %}
+                {% set row_color = 'even' %}
+            {% else %}
+                {% set row_color = 'odd' %}
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -8,9 +8,9 @@
     <thead>
         <tr>
             <th>Nome</th>
-            <th>Ruolo</th>
+            <th>R</th>
             <th>Mv</th>
-            <th>Mf</th>
+            <th>Fm</th>
             <th>Ass</th>
             <th>R+</th>
             <th>Rc</th>
@@ -25,9 +25,9 @@
         {% for index, player in squadra.iterrows() %}
             <tr class="{{ row_color }}">
                 <td>{{ player['Nome'] }}</td>
-                <td>{{ player['Ruolo'] }}</td>
+                <td>{{ player['R'] }}</td>
                 <td>{{ player['Mv'] }}</td>
-                <td>{{ player['Mf'] }}</td>
+                <td>{{ player['Fm'] }}</td>
                 <td>{{ player['Ass'] }}</td>
                 <td>{{ player['R+'] }}</td>
                 <td>{{ player['Rc'] }}</td>

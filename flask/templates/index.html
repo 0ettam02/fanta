@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, rgb(106, 106, 106), rgb(0, 255, 225));
+            background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(62, 239, 255));
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,11 +23,15 @@
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             width: 80%;
+            max-height: 100vh;
+            overflow: auto; /* Added 'auto' for scrolling */
+        }
+        
+        .content h1 {
+            margin-top: 0; /* Remove margin from the heading */
         }
 
         .scrollable {
-            max-height: 90vh;
-            overflow-y: scroll;
             padding-right: 20px;
         }
         
@@ -47,7 +51,7 @@
 </head>
 <body>
     <div class="content">
-        <h1 class="mt-4">Fantacalcio Squadra Selector</h1>
+        <h1>Fantacalcio Squadra Selector</h1>
         <div class="scrollable">
             <form action="/" method="POST">
                 <label for="soglia_voto_minimo" class="form-label">Soglia Voto Minimo:</label>

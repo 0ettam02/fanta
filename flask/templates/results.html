@@ -3,52 +3,71 @@
 {% block title %}Risultati Squadra Fantacalcio{% endblock %}
 
 {% block content %}
-<h1 class="mt-4">Squadra Fantacalcio Selezionata</h1>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>R</th>
-            <th>Mv</th>
-            <th>Fm</th>
-            <th>Ass</th>
-            <th>R+</th>
-            <th>Rc</th>
-            <th>R-</th>
-            <th>Amm</th>
-            <th>Esp</th>
-            <th>Au</th>
-        </tr>
-        <style>
-            body.black-bg {
-                background-color: rgb(106, 106, 106);
-                color: rgb(0, 255, 225);
-            }
-        </style>
-    </thead>
-    <tbody>
-        <body class="black-bg"></body>
-        {% set row_color = 'odd' %}
-        {% for index, player in squadra.iterrows() %}
-            <tr class="{{ row_color }}">
-                <td>{{ player['Nome'] }}</td>
-                <td>{{ player['R'] }}</td>
-                <td>{{ player['Mv'] }}</td>
-                <td>{{ player['Fm'] }}</td>
-                <td>{{ player['Ass'] }}</td>
-                <td>{{ player['R+'] }}</td>
-                <td>{{ player['Rc'] }}</td>
-                <td>{{ player['R-'] }}</td>
-                <td>{{ player['Amm'] }}</td>
-                <td>{{ player['Esp'] }}</td>
-                <td>{{ player['Au'] }}</td>
-            </tr>
-            {% if row_color == 'odd' %}
-                {% set row_color = 'even' %}
-            {% else %}
+<style>
+    body {
+        background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(62, 239, 255));
+        color: rgb(255, 255, 255);
+    }
+
+    .content {
+        position: relative;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        width: 100%;
+        max-height: 105vh;
+        overflow: auto;
+        margin: 0 auto;
+    }
+
+    table {
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <h1 class="mt-4">Squadra Fantacalcio Selezionata</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>R</th>
+                    <th>Mv</th>
+                    <th>Fm</th>
+                    <th>Ass</th>
+                    <th>R+</th>
+                    <th>Rc</th>
+                    <th>R-</th>
+                    <th>Amm</th>
+                    <th>Esp</th>
+                    <th>Au</th>
+                </tr>
+            </thead>
+            <tbody>
                 {% set row_color = 'odd' %}
-            {% endif %}
-        {% endfor %}
-    </tbody>
-</table>
+                {% for index, player in squadra.iterrows() %}
+                    <tr class="{{ row_color }}">
+                        <td>{{ player['Nome'] }}</td>
+                        <td>{{ player['R'] }}</td>
+                        <td>{{ player['Mv'] }}</td>
+                        <td>{{ player['Fm'] }}</td>
+                        <td>{{ player['Ass'] }}</td>
+                        <td>{{ player['R+'] }}</td>
+                        <td>{{ player['Rc'] }}</td>
+                        <td>{{ player['R-'] }}</td>
+                        <td>{{ player['Amm'] }}</td>
+                        <td>{{ player['Esp'] }}</td>
+                        <td>{{ player['Au'] }}</td>
+                    </tr>
+                    {% if row_color == 'odd' %}
+                        {% set row_color = 'even' %}
+                    {% else %}
+                        {% set row_color = 'odd' %}
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
 {% endblock %}

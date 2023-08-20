@@ -20,7 +20,7 @@ model = Sequential()
 model.add(Dense(12, input_dim=X_train.shape[1], activation='relu'))
 model.add(Dense(1, activation='linear'))  
 
-model.compile(optimizer='sgd', loss='mean_squared_error', metrics=['accuracy'])  # Using 'mean_squared_error' loss for regression
+model.compile(optimizer='sgd', loss='mean_squared_error', metrics=['accuracy'])  
 
 print(model.summary())
 
@@ -29,13 +29,10 @@ model.fit(X_train, y_train, epochs= 100)
 giocatore = str(input("Inserisci il nome del giocatore: "))
 
 if giocatore in dataset2['Nome'].values:
-    # Estrai i dati relativi al giocatore specifico da dataset1
     giocatore_data = dataset1[dataset1['Nome'] == giocatore].drop(['Gf', 'R', 'Nome', 'Squadra', 'Id', 'Rm'], axis=1).values
 
-    # Effettua la normalizzazione sui nuovi dati
     giocatore_data_normalized = ss.transform(giocatore_data)
 
-    # Ottieni la previsione del numero di gol fatti (Gf) utilizzando il modello
     predicted = model.predict(giocatore_data_normalized)
 
     print("Prevista quantità di Gf:", predicted[0][0])

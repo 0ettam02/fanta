@@ -68,7 +68,7 @@ def index():
 
         return render_template('results.html', squadra=squadra_fantacalcio)
 
-    return render_template('index.html')
+    return render_template('squadra.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -19,8 +19,15 @@
             <th>Esp</th>
             <th>Au</th>
         </tr>
+        <style>
+            body.black-bg {
+                background-color: rgb(106, 106, 106);
+                color: rgb(0, 255, 225);
+            }
+        </style>
     </thead>
     <tbody>
+        <body class="black-bg"></body>
         {% set row_color = 'odd' %}
         {% for index, player in squadra.iterrows() %}
             <tr class="{{ row_color }}">

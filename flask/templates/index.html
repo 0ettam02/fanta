@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Interfaccia con Bottone</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titolo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(62, 239, 255));
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .button {
+            margin: 10px;
+        }
+
+        .button button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 60px 34px;
+            font-size: 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Interfaccia con Bottone</h1>
-    <form method="post">
-        <button type="submit">Premi il Bottone</button>
-    </form>
+    <h1>Titolo</h1>
+    <div class="button-container">
+        <div class="button">
+            <form method="post" action="/">
+                <input type="hidden" name="action" value="squadra">
+                <button type="submit">Creazione Squadra</button>
+            </form>
+        </div>
+        <div class="button">
+            <form method="post" action="/">
+                <input type="hidden" name="action" value="predict">
+                <button type="submit">Predizione Statistiche</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

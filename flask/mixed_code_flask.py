@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
-import os
-import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
@@ -52,7 +50,7 @@ def squadra():
 
                 difensori_selezionati = dataset[
                     (dataset['Fm'] >= soglia_voto_minimo) & (dataset['Fm'] < soglia_voto_massimo) & (dataset['Ass'] >= soglia_assist_minimo) & (dataset['R+'] >= soglia_rigori_minimi_segnati) &
-                    (dataset['R'] == 'D') & 
+                    (dataset['R'] == 'D') &
                     (dataset['Rc'] >= soglia_rc_minimi_calciati) & (dataset['R-'] <= soglia_r_errati_max) &
                     (dataset['Amm'] <= soglia_amm_max) & (dataset['Esp'] <= soglia_esp_max) & 
                     (dataset['Au'] <= soglia_au_max)
@@ -85,7 +83,7 @@ def squadra():
     return render_template('squadra.html')
 
 
-#CODICE RETE NEURAKE ARTIFICIALE PREVISIONE STATS-------------------------------------
+"""#CODICE RETE NEURAKE ARTIFICIALE PREVISIONE STATS-------------------------------------
 @app.route('/pred_stats', methods=['GET', 'POST'])
 def train_model():
     dataset1 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\flask\\seriea2022_23.csv", sep=",")
@@ -108,13 +106,30 @@ def train_model():
 
     return model, ss
 
-model, ss = train_model()
+model, ss = train_model()"""
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
     global giocatore, prediction
+
     dataset1 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\flask\\seriea2022_23.csv", sep=",")
     dataset2 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\flask\\seriea2023_24.csv", sep=",")
+
+    X = dataset1.drop(['Gf', 'R', 'Nome', 'Squadra', 'Id', 'Rm'], axis=1).values
+    y = dataset1['Gf'].values
+
+    X_train, _, y_train, _ = train_test_split(X, y, test_size=0.3)
+
+    ss = StandardScaler()
+    X_train = ss.fit_transform(X_train)
+
+    model = Sequential()
+    model.add(Dense(12, input_dim=X_train.shape[1], activation='relu'))
+    model.add(Dense(1, activation='linear'))
+
+    model.compile(optimizer='sgd', loss='mean_squared_error', metrics=['accuracy'])
+
+    model.fit(X_train, y_train, epochs=100)
 
     if request.method == "POST":
         giocatore = request.form["giocatore"]

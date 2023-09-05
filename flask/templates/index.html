@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titolo</title>
+    <title>Insight</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -11,6 +11,31 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(62, 239, 255));
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            display: flex; /* Imposta il contenuto dell'intestazione su un layout flessibile */
+            justify-content: space-between; /* Spaziatura uniforme tra i figli dell'intestazione */
+            align-items: center; /* Centra verticalmente il contenuto dell'intestazione */
+            margin: 0; /* Rimuove il margin dell'header */
+        }
+
+        header img {
+            width: 100px;
+            height: auto;
+            margin-left: 20px; /* Aggiunge uno spazio a sinistra dell'immagine */
+        }
+
+        header a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         h1 {
@@ -42,10 +67,27 @@
         .button button:hover {
             background-color: #0056b3;
         }
+
+        /* Alcune modifiche ai media query per la visualizzazione su telefoni */
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+            }
+            
+            header img {
+                margin-right: 0; /* Rimuove lo spazio tra il logo e il menu su telefoni */
+                margin-bottom: 10px; /* Aggiunge uno spazio tra il logo e i link su telefoni */
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Titolo</h1>
+    <header>
+        <img src="logo.png" alt="Logo">
+        <a href="index.html">Home</a>
+        <a href="#">Chi Siamo</a>
+        <a href="#">Cosa Facciamo</a>
+    </header>
     <div class="button-container">
         <div class="button">
             <form method="post" action="/">

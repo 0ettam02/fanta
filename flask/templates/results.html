@@ -3,29 +3,75 @@
 {% block title %}Risultati Squadra Fantacalcio{% endblock %}
 
 {% block content %}
-<style>
-    body {
-        background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(62, 239, 255));
-        color: rgb(255, 255, 255);
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Squadra Fantacalcio</title>
+    <style>
+        body {
+            margin: 0; /* Rimuove il margin predefinito del body */
+            background: linear-gradient(to bottom, rgb(89, 89, 89), rgb(62, 239, 255));
+            color: rgb(255, 255, 255);
+        }
 
-    .content {
-        position: relative;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        width: 100%;
-        max-height: 105vh;
-        overflow: auto;
-        margin: 0 auto;
-    }
+        /* Menu di navigazione */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            display: flex; /* Imposta il contenuto dell'intestazione su un layout flessibile */
+            justify-content: space-between; /* Spaziatura uniforme tra i figli dell'intestazione */
+            align-items: center; /* Centra verticalmente il contenuto dell'intestazione */
+            margin: 0; /* Rimuove il margin dell'header */
+        }
 
-    table {
-        width: 100%;
-    }
-</style>
+        header img {
+            width: 100px;
+            height: auto;
+            margin-left: 20px; /* Aggiunge uno spazio a sinistra dell'immagine */
+        }
 
+        header a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Contenuto principale */
+        .content {
+            position: relative;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 100%;
+            max-height: 105vh;
+            overflow: auto;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
 <body>
+    <header>
+        <img src="logo.png" alt="Logo">
+        <a href="index.html">Home</a>
+        <a href="#">Chi Siamo</a>
+        <a href="#">Cosa Facciamo</a>
+    </header>
     <div class="content">
         <h1 class="mt-4">Squadra Fantacalcio Selezionata</h1>
         <table class="table table-striped">
@@ -70,4 +116,8 @@
         </table>
     </div>
 </body>
+</html>
 {% endblock %}
+
+
+

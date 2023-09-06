@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -81,32 +82,6 @@ def squadra():
 
         return redirect(url_for('results'))
     return render_template('squadra.html')
-
-
-"""#CODICE RETE NEURAKE ARTIFICIALE PREVISIONE STATS-------------------------------------
-@app.route('/pred_stats', methods=['GET', 'POST'])
-def train_model():
-    dataset1 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\flask\\seriea2022_23.csv", sep=",")
-
-    X = dataset1.drop(['Gf', 'R', 'Nome', 'Squadra', 'Id', 'Rm'], axis=1).values
-    y = dataset1['Gf'].values
-
-    X_train, _, y_train, _ = train_test_split(X, y, test_size=0.3)
-
-    ss = StandardScaler()
-    X_train = ss.fit_transform(X_train)
-
-    model = Sequential()
-    model.add(Dense(12, input_dim=X_train.shape[1], activation='relu'))
-    model.add(Dense(1, activation='linear'))
-
-    model.compile(optimizer='sgd', loss='mean_squared_error', metrics=['accuracy'])
-
-    model.fit(X_train, y_train, epochs=100)
-
-    return model, ss
-
-model, ss = train_model()"""
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():

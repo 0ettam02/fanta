@@ -18,24 +18,26 @@
             color: #fff;
             padding: 10px 0;
             text-align: center;
-            display: flex; /* Imposta il contenuto dell'intestazione su un layout flessibile */
-            justify-content: space-between; /* Spaziatura uniforme tra i figli dell'intestazione */
-            align-items: center; /* Centra verticalmente il contenuto dell'intestazione */
-            margin: 0; /* Rimuove il margin dell'header */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
         }
 
         header img {
             width: 100px;
             height: auto;
-            margin-left: 20px; /* Aggiunge uno spazio a sinistra dell'immagine */
+            margin-left: 20px;
         }
 
         header a {
             text-decoration: none;
             color: #fff;
-            margin: 0 20px;
+            margin: 0 auto;
             font-size: 18px;
             font-weight: bold;
+            display: block;
+            width: 50px;
         }
 
         h1 {
@@ -68,26 +70,52 @@
             background-color: #0056b3;
         }
 
-        /* Alcune modifiche ai media query per la visualizzazione su telefoni */
+        .image-section {
+            padding: 0px;
+            max-height: 800px; /* Imposta un'altezza massima desiderata per la sezione */
+            overflow: hidden;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        img {
+            width: 100%; 
+            height: auto; 
+        }
+
         @media (max-width: 768px) {
             .button-container {
                 flex-direction: column;
             }
-            
+
             header img {
-                margin-right: 0; /* Rimuove lo spazio tra il logo e il menu su telefoni */
-                margin-bottom: 10px; /* Aggiunge uno spazio tra il logo e i link su telefoni */
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 50px;
+            }
+
+            header a {
+                padding-right: 40px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo">
+        <img src="\static\logo_header.png" alt="Logo">
         <a href="index.html">Home</a>
         <a href="#">Chi Siamo</a>
         <a href="#">Cosa Facciamo</a>
     </header>
+
+    <section class="image-section">
+        <div class="image-container">
+            <img src="\static\Gen-2-1820413759_-M-5_-fans-walking-near-a.gif" alt="Immagine">
+        </div>
+    </section>
+
     <div class="button-container">
         <div class="button">
             <form method="post" action="/">

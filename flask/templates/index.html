@@ -44,39 +44,27 @@
             color: #fff;
         }
 
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .button {
-            margin: 10px;
-        }
-
-        .button button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 60px 34px;
-            font-size: 28px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button button:hover {
-            background-color: #0056b3;
-        }
-
         .image-section {
+            position: relative;
+            text-align: center;
             padding: 0px;
-            max-height: 800px; /* Imposta un'altezza massima desiderata per la sezione */
+            max-height: 1000px; /* Imposta un'altezza massima desiderata per la sezione */
+            overflow: hidden;
+        }
+
+        .image-section2 {
+            position: relative;
+            text-align: center;
+            padding: 0px;
+            max-height: 1000px; /* Imposta un'altezza massima desiderata per la sezione */
             overflow: hidden;
         }
 
         .image-container {
+            text-align: center;
+        }
+
+        .image-container2 {
             text-align: center;
         }
 
@@ -85,7 +73,68 @@
             height: auto; 
         }
 
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            left: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .button-container2 {
+            position: absolute;
+            bottom: 20px;
+            right: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .button {
+            margin: 10px;
+        }
+
+        .button button {
+            background-color: #fff;
+            color: black;
+            border: none;
+            padding: 20px 14px;
+            font-size: 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button button:hover {
+            background-color: gray;
+        }
+
+        .button2 {
+            margin: 10px;
+        }
+
+        .button2 button {
+            background-color: #fff;
+            color: black;
+            border: none;
+            padding: 20px 14px;
+            font-size: 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button2 button:hover {
+            background-color: gray;
+        }
+
         @media (max-width: 768px) {
+            body{
+                padding: 0;
+                margin: 0;
+            }
+
             .button-container {
                 flex-direction: column;
             }
@@ -94,11 +143,27 @@
                 margin-right: 0;
                 margin-bottom: 10px;
                 width: 50px;
+                margin-left: 10px;
             }
 
             header a {
                 padding-right: 40px;
             }
+
+            .button button,
+            .button2 button {
+                padding: 10px 7px; /* Dimensioni dei bottoni per schermi più piccoli */
+                font-size: 14px; /* Dimensione del testo dei bottoni per schermi più piccoli */
+            }
+
+            .image-container img,
+            .image-container2 img {
+                width: auto; /* Larghezza pari alla larghezza dello schermo */
+                height: auto; /* Altezza automatica per mantenere l'aspetto proporzionato */
+                margin: 0;
+            }
+
+
         }
     </style>
 </head>
@@ -113,22 +178,30 @@
     <section class="image-section">
         <div class="image-container">
             <img src="\static\Gen-2-1820413759_-M-5_-fans-walking-near-a.gif" alt="Immagine">
+            <div class="button-container">
+                <div class="button">
+                    <form method="post" action="/">
+                        <input type="hidden" name="action" value="squadra">
+                        <button type="submit">Creazione Squadra</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
-    <div class="button-container">
-        <div class="button">
-            <form method="post" action="/">
-                <input type="hidden" name="action" value="squadra">
-                <button type="submit">Creazione Squadra</button>
-            </form>
+    <!-- Nuova sezione "image-section2" con il bottone "Predizione Statistiche" -->
+    <section class="image-section2">
+        <div class="image-container2">
+            <img src="\static\Gen-2-3208522214_-M-5_-a-soccer-team-kickin.gif" alt="Immagine">
+            <div class="button-container2">
+                <div class="button2">
+                    <form method="post" action="/">
+                        <input type="hidden" name="action" value="predict">
+                        <button type="submit">Predizione Statistiche</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="button">
-            <form method="post" action="/">
-                <input type="hidden" name="action" value="predict">
-                <button type="submit">Predizione Statistiche</button>
-            </form>
-        </div>
-    </div>
+    </section>
 </body>
 </html>

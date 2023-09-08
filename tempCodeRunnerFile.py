@@ -1,0 +1,1 @@
+X = np.vstack((X1, X2))

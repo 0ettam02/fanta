@@ -17,6 +17,8 @@ def index():
         return redirect(url_for('squadra'))
     elif request.method == 'POST' and action == 'predict':
         return redirect(url_for('predict'))
+    elif request.method == 'POST' and action == 'predict_assist':
+        return redirect(url_for('predict_assist'))
     return render_template('index.html')
 
 
@@ -128,18 +130,66 @@ def predict():
 
     return render_template("pred_squad.html")
 
+@app.route("/predict_assist", methods=["GET", "POST"])
+def predict_assist():
+    global giocatore, prediction_assist
+
+    dataset1 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\dataset_jumbo.csv", sep=",")
+    dataset2 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\seriea2023_24.csv", sep=",")
+
+    X = dataset1.drop(['R', 'Nome', 'Squadra', 'Id'], axis=1).values
+    y = dataset1['Ass'].values
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+    ss = StandardScaler()
+    X_train = ss.fit_transform(X_train)
+    X_test = ss.transform(X_test)
+
+    model = Sequential()
+    model.add(Dense(12, input_dim=X_train.shape[1], activation='relu'))
+    model.add(Dense(24, activation='relu'))
+    model.add(Dense(36, activation='relu'))
+    model.add(Dense(42, activation='relu'))
+    model.add(Dense(1, activation='linear'))  
+
+    model.compile(optimizer='sgd', loss='mean_squared_error', metrics=['accuracy'])  
+
+    print(model.summary())
+
+    model.fit(X_train, y_train, epochs= 100)
+
+    if request.method == 'POST':
+        giocatore = request.form["giocatore"]
+
+        if giocatore in dataset2['Nome'].values:
+            giocatore_data = dataset1[dataset1['Nome'] == giocatore].drop(['R', 'Nome', 'Squadra', 'Id'], axis=1).values
+
+            if len(giocatore_data) > 0:
+                giocatore_data_normalized = ss.transform(giocatore_data)
+
+                predicted = model.predict(giocatore_data_normalized)
+
+                prediction_assist = predicted.mean()
+                return redirect(url_for('results_stats_assist'))
+
+    return render_template("pred_assist.html")
+
 
 #VISUALIZZAZIONE RISULTATI CREAZIONE SQUADRA----------------------------------------------
 @app.route('/results')
 def results():
         return render_template('results.html', squadra=squadra_fantacalcio)
     
-#VISUALIZZAZIONE RISULTATI PREVISIONE STATISTICHE------------------------------------------
+#VISUALIZZAZIONE RISULTATI PREVISIONE GOAL------------------------------------------
 @app.route('/results_stats')
 def results_stats():
     return render_template("results_pred_squad.html", giocatore=giocatore, prediction=prediction)
     
-    
+#VISUALIZZAZIONE RISULTATI PREVISIONE ASSIST------------------------------------------
+@app.route('/results_stats_assist')
+def results_stats_assist():
+    return render_template("results_pred_assist.html", giocatore=giocatore, prediction_assist=prediction_assist)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -60,11 +60,23 @@
             overflow: hidden;
         }
 
+        .image-section3 {
+            position: relative;
+            text-align: center;
+            padding: 0px;
+            max-height: 1000px; /* Imposta un'altezza massima desiderata per la sezione */
+            overflow: hidden;
+        }
+
         .image-container {
             text-align: center;
         }
 
         .image-container2 {
+            text-align: center;
+        }
+
+        .image-container3 {
             text-align: center;
         }
 
@@ -91,7 +103,17 @@
             align-items: flex-start;
         }
 
+        
+
         .button {
+            margin: 10px;
+        }
+
+        .button2 {
+            margin: 10px;
+        }
+
+        .button3 {
             margin: 10px;
         }
 
@@ -106,14 +128,6 @@
             transition: background-color 0.3s;
         }
 
-        .button button:hover {
-            background-color: gray;
-        }
-
-        .button2 {
-            margin: 10px;
-        }
-
         .button2 button {
             background-color: #fff;
             color: black;
@@ -125,7 +139,27 @@
             transition: background-color 0.3s;
         }
 
+        .button3 button {
+            background-color: #fff;
+            color: black;
+            border: none;
+            padding: 20px 14px;
+            font-size: 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button button:hover {
+            background-color: gray;
+        }
+
+    
         .button2 button:hover {
+            background-color: gray;
+        }
+
+        .button3 button:hover {
             background-color: gray;
         }
 
@@ -198,6 +232,12 @@
                     <form method="post" action="/">
                         <input type="hidden" name="action" value="predict">
                         <button type="submit">Predizione Statistiche</button>
+                    </form>
+                </div>
+                <div class="button3">
+                    <form method="post" action="/">
+                        <input type="hidden" name="action" value="predict_assist">
+                        <button type="submit">Predizione Assist</button>
                     </form>
                 </div>
             </div>

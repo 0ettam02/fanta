@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
 from keras.layers import Dense
 
-dataset1 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\seriea2022_23.csv", sep=",")
+dataset1 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\dataset_jumbo.csv", sep=",")
 dataset2 = pd.read_csv("C:\\Users\\aruta\\OneDrive\\Desktop\\app_fanta\\seriea2023_24.csv", sep=",")
 
 prezzo = float(input())
@@ -13,6 +13,8 @@ dataset1['Prezzo'] = prezzo
 X = dataset1[['Prezzo']]
 
 print(X)
+
+print(dataset1)
 """y = dataset1['Gf'].values
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
